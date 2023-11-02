@@ -13,8 +13,14 @@ class MovieDetailsFragmentViewModel(private val moviesRepository: MoviesReposito
     private val movieDetailsResultFlow = MutableStateFlow<Resource<MovieDetails>>(Resource.None())
     val movieDetailsResult = movieDetailsResultFlow.asStateFlow()
 
+    private val isMovieSavedResultFlow = MutableStateFlow<Resource<Boolean>>(Resource.None())
+    val isMovieSavedResult = isMovieSavedResultFlow.asStateFlow()
+
     private val saveMovieResultFlow = MutableStateFlow<Resource<Void>>(Resource.None())
     val saveMovieResult = saveMovieResultFlow.asStateFlow()
+
+    private val deleteMovieResultFlow = MutableStateFlow<Resource<Void>>(Resource.None())
+    val deleteMovieResult = deleteMovieResultFlow.asStateFlow()
 
     fun fetchMovieDetails(movieId: Int) {
         movieDetailsResultFlow.value = Resource.Loading()
@@ -28,15 +34,46 @@ class MovieDetailsFragmentViewModel(private val moviesRepository: MoviesReposito
         }
     }
 
-    fun saveMovie() {
-        saveMovieResultFlow.value = Resource.Loading()
+    fun checkIfMovieIsSaved(movieId: Int) {
         viewModelScope.launch {
             try {
-                moviesRepository.saveMovie(movieDetailsResultFlow.value.data!!)
+                val isMovieSaved = moviesRepository.isMovieInSavedMovies(movieId = movieId)
+                isMovieSavedResultFlow.value = Resource.Success(data = isMovieSaved)
+            } catch (e: Exception) {
+                isMovieSavedResultFlow.value = Resource.Failure(e.message)
+            }
+        }
+    }
+
+    fun onFabSaveMovieClicked(movieId: Int) {
+        viewModelScope.launch {
+            if (moviesRepository.isMovieInSavedMovies(movieId = movieId)) {
+                deleteMovie(movieId = movieId)
+            } else {
+                saveMovie()
+            }
+        }
+    }
+
+    private suspend fun deleteMovie(movieId: Int) {
+        deleteMovieResultFlow.value = Resource.Loading()
+        try {
+            moviesRepository.deleteMovie(movieId = movieId)
+            deleteMovieResultFlow.value = Resource.Success()
+        } catch (e: Exception) {
+            deleteMovieResultFlow.value = Resource.Failure(e.message)
+        }
+    }
+
+    private suspend fun saveMovie() {
+        movieDetailsResultFlow.value.data?.let { movieDetails ->
+            saveMovieResultFlow.value = Resource.Loading()
+            try {
+                moviesRepository.saveMovie(movieDetails)
                 saveMovieResultFlow.value = Resource.Success()
             } catch (e: Exception) {
                 saveMovieResultFlow.value = Resource.Failure(e.message)
             }
-        }
+        } ?: run { saveMovieResultFlow.value = Resource.Failure() }
     }
 }

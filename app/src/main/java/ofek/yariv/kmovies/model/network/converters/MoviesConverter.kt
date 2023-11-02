@@ -10,9 +10,9 @@ class MoviesConverter {
     fun convertMoviesResponseToMovies(moviesResponse: MoviesResponse): List<Movie> =
         moviesResponse.movies?.map { movieResponse ->
             Movie(
+                id = movieResponse.id,
                 adult = movieResponse.adult,
                 backdropPath = movieResponse.backdropPath,
-                id = movieResponse.id,
                 title = movieResponse.title,
                 originalLanguage = movieResponse.originalLanguage,
                 originalTitle = movieResponse.originalTitle,
@@ -33,7 +33,7 @@ class MoviesConverter {
             adult = movieDetailsResponse.adult,
             backdropPath = movieDetailsResponse.backdropPath,
             budget = movieDetailsResponse.budget,
-            genres = movieDetailsResponse.genres?.joinToString(separator = ","),
+            genres = movieDetailsResponse.genres?.joinToString(separator = ", ") { it.name.toString() },
             id = movieDetailsResponse.id,
             originalTitle = movieDetailsResponse.originalTitle,
             overview = movieDetailsResponse.overview,

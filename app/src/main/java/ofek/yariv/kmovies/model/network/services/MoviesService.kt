@@ -25,7 +25,7 @@ data class MoviesResponse(
 data class MovieResponse(
     @Json(name = "adult") val adult: Boolean? = null,
     @Json(name = "backdrop_path") val backdropPath: String? = null,
-    @Json(name = "id") val id: Int? = null,
+    @Json(name = "id") val id: Int = 0,
     @Json(name = "title") val title: String? = null,
     @Json(name = "original_language") val originalLanguage: String? = null,
     @Json(name = "original_title") val originalTitle: String? = null,

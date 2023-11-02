@@ -1,23 +1,23 @@
-package ofek.yariv.kmovies.model.db
+package ofek.yariv.kmovies.model.db.saved_movies
 
 import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
-import ofek.yariv.kmovies.model.data.Movie
 import ofek.yariv.kmovies.model.data.MovieDetails
 
 @Database(
     entities = [MovieDetails::class],
-    version = 1
+    version = 1,
+    exportSchema = false
 )
-abstract class MoviesDatabase : RoomDatabase() {
+abstract class SavedMoviesDatabase : RoomDatabase() {
 
-    abstract fun getMoviesDao(): MoviesDao
+    abstract fun getMoviesDao(): SavedMoviesDao
 
     companion object {
         @Volatile
-        private var instance: MoviesDatabase? = null
+        private var instance: SavedMoviesDatabase? = null
         private val LOCK = Any()
 
         operator fun invoke(context: Context) = instance ?: synchronized(LOCK) {
@@ -27,8 +27,8 @@ abstract class MoviesDatabase : RoomDatabase() {
         private fun createDatabase(context: Context) =
             Room.databaseBuilder(
                 context.applicationContext,
-                MoviesDatabase::class.java,
-                "movies_db.db"
+                SavedMoviesDatabase::class.java,
+                "saved_movies_db.db"
             ).build()
     }
 }

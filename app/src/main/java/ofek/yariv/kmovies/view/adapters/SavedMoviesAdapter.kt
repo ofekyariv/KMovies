@@ -4,8 +4,10 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
+import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.bumptech.glide.load.engine.DiskCacheStrategy
 import ofek.yariv.kmovies.R
 import ofek.yariv.kmovies.model.data.Movie
 import ofek.yariv.kmovies.model.network.api.Api
@@ -41,11 +43,18 @@ class SavedMoviesAdapter(
 
     class MovieViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         private val ivMoviePoster: ImageView = itemView.findViewById(R.id.ivMoviePoster)
+        private val tvMovieRating: TextView = itemView.findViewById(R.id.tvMovieRating)
+
         fun bind(movie: Movie, onMovieClickListener: (Movie) -> Unit) {
-            if (movie.posterPath != null) {
-                Glide.with(itemView.context).load(Api.getPosterPath(movie.posterPath))
-                    .into(ivMoviePoster)
+            if (movie.posterPath == null) {
+                return
             }
+            Glide.with(itemView.context).load(Api.getPosterPath(movie.posterPath))
+                .diskCacheStrategy(DiskCacheStrategy.ALL)
+                .into(ivMoviePoster)
+
+            tvMovieRating.text = String.format("%.1f", movie.voteAverage)
+
             itemView.setOnClickListener {
                 onMovieClickListener(movie)
             }

@@ -139,11 +139,7 @@ class MainActivity : AppCompatActivity(), ScrollListener, TopBarTextChangeListen
         val navHostFragment =
             supportFragmentManager.findFragmentById(R.id.moviesNavHostFragment) as NavHostFragment
         val navController = navHostFragment.navController
-
-        // Clear the back stack when navigating to a top-level destination
         navController.popBackStack(destinationId, inclusive = false)
-
-        // Navigate to the specified destination if it's not the current one
         if (navController.currentDestination?.id != destinationId) {
             navController.navigate(destinationId)
         }

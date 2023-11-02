@@ -6,11 +6,14 @@ import org.koin.dsl.module
 val repositoryModule = module {
     single {
         MoviesRepository(
-            moviesDatabase = get(),
+            savedMoviesDatabase = get(),
+            trendingMoviesDayDatabase = get(),
+            trendingMoviesWeekDatabase = get(),
             moviesService = get(),
             movieDetailsService = get(),
             moviesConverter = get(),
             timeFrameManager = get(),
+            internetManager = get(),
         )
     }
 }

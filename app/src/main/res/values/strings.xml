@@ -15,10 +15,10 @@
     <string name="system_default">System default</string>
     <string name="something_wrong">Something is wrong</string>
     <string name="speech_not_supported">Unsupported device</string>
-    <string name="error">Error</string>
-    <string name="error_movie_details">An error occurred while getting movie details</string>
-    <string name="error_save_movie">An error occurred while saving movie</string>
+    <string name="error">An error occurred, please try again</string>
+    <string name="no_internet_connection">No internet connection</string>
     <string name="movie_saved">Movie saved</string>
+    <string name="movie_deleted">Movie deleted</string>
     <string name="language">Language</string>
     <string name="english">English</string>
     <string name="movies">Movies</string>
@@ -29,4 +29,6 @@
     <string name="change_to_trending_today">Tap To See Trending Today</string>
     <string name="trending_this_week">Top Movies This Week</string>
     <string name="trending_today">Top Movies Today</string>
+    <string name="rating">rating</string>
+    <string name="poster">poster</string>
 </resources>

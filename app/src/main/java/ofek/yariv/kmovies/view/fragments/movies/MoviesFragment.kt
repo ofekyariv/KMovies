@@ -2,6 +2,7 @@ package ofek.yariv.kmovies.view.fragments.movies
 
 import android.os.Bundle
 import android.view.View
+import android.widget.Toast
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
@@ -63,8 +64,17 @@ class MoviesFragment : BaseFragment(R.layout.fragment_movies) {
 
     private fun observeChanges() {
         lifecycleScope.launch {
-            mainActivityViewModel.trendingMovies.collect { pagingData ->
-                moviesAdapter.submitData(pagingData)
+            launch {
+                mainActivityViewModel.trendingMovies.collect { pagingData ->
+                    moviesAdapter.submitData(pagingData)
+                }
+            }
+            launch {
+                mainActivityViewModel.pagingError.collect { throwable ->
+                    throwable?.let {
+                        showToast(getString(R.string.error))
+                    }
+                }
             }
         }
         setupSwipeToRefresh()
@@ -124,5 +134,9 @@ class MoviesFragment : BaseFragment(R.layout.fragment_movies) {
             }
             refreshData()
         }
+    }
+
+    private fun showToast(message: String) {
+        Toast.makeText(requireContext(), message, Toast.LENGTH_SHORT).show()
     }
 }

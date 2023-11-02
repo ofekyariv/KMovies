@@ -6,7 +6,7 @@ import androidx.room.PrimaryKey
 import kotlinx.parcelize.Parcelize
 
 @Parcelize
-@Entity(tableName = "movies")
+@Entity(tableName = "saved_movies")
 data class MovieDetails(
     @PrimaryKey(autoGenerate = true) val id: Int = 0,
     val adult: Boolean? = null,

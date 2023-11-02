@@ -84,7 +84,7 @@ class SavedMoviesFragment : BaseFragment(R.layout.fragment_saved_movies) {
     }
 
     private fun handleError() {
-        Toast.makeText(requireContext(), R.string.error_movie_details, Toast.LENGTH_SHORT)
+        Toast.makeText(requireContext(), R.string.error, Toast.LENGTH_SHORT)
             .show()
         findNavController().popBackStack()
     }
