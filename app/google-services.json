@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "103186603381",
+    "project_id": "kmovies-3abab",
+    "storage_bucket": "kmovies-3abab.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:103186603381:android:7d462f651f61967a39473c",
+        "android_client_info": {
+          "package_name": "ofek.yariv.kmovies"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB5Vv0osXZLoRCWD_MBsziG73ufEHlT8oc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

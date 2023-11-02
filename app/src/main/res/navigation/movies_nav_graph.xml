@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/movies_nav_graph"
+    app:startDestination="@id/moviesFragment">
+
+    <fragment
+        android:id="@+id/moviesFragment"
+        android:name="ofek.yariv.kmovies.view.fragments.movies.MoviesFragment"
+        android:label="MoviesFragment">
+        <action
+            android:id="@+id/action_moviesFragment_to_movieDetailsFragment"
+            app:destination="@id/movieDetailsFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
+    </fragment>
+    <fragment
+        android:id="@+id/savedMoviesFragment"
+        android:name="ofek.yariv.kmovies.view.fragments.saved_movies.SavedMoviesFragment"
+        android:label="SavedMoviesFragment">
+        <action
+            android:id="@+id/action_savedMoviesFragment_to_movieDetailsFragment"
+            app:destination="@id/movieDetailsFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
+    </fragment>
+    <fragment
+        android:id="@+id/searchMoviesFragment"
+        android:name="ofek.yariv.kmovies.view.fragments.search_movies.SearchMoviesFragment"
+        android:label="SearchMoviesFragment">
+        <action
+            android:id="@+id/action_searchMoviesFragment_to_movieDetailsFragment"
+            app:destination="@id/movieDetailsFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
+    </fragment>
+    <fragment
+        android:id="@+id/movieDetailsFragment"
+        android:name="ofek.yariv.kmovies.view.fragments.movie_details.MovieDetailsFragment"
+        android:label="MovieDetailsFragment">
+        <argument
+            android:name="movie"
+            app:argType="ofek.yariv.kmovies.model.data.Movie" />
+    </fragment>
+</navigation>

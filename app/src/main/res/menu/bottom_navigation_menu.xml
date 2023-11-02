@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/moviesFragment"
+        android:icon="@drawable/ic_movies"
+        android:title="@string/movies" />
+
+    <item
+        android:id="@+id/savedMoviesFragment"
+        android:icon="@drawable/ic_heart"
+        android:title="@string/saved_movies" />
+
+    <item
+        android:id="@+id/searchMoviesFragment"
+        android:icon="@drawable/ic_search"
+        android:title="@string/search_movies" />
+
+</menu>

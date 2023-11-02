@@ -1,0 +1,32 @@
+<resources>
+    <string name="app_name">K Movies</string>
+    <string name="app_slogan">Only The Best</string>
+    <string name="share_text">Hey! I am using K Movies App</string>
+    <string name="no_connection">No network connection!</string>
+    <string name="back">Back</string>
+    <string name="contact_us">Contact us</string>
+    <string name="share">Share</string>
+    <string name="cancel">Cancel</string>
+    <string name="speak_now">Speak Now</string>
+    <string name="change_theme">Change theme</string>
+    <string name="choose_theme">Choose Theme</string>
+    <string name="light">Light</string>
+    <string name="dark">Dark</string>
+    <string name="system_default">System default</string>
+    <string name="something_wrong">Something is wrong</string>
+    <string name="speech_not_supported">Unsupported device</string>
+    <string name="error">Error</string>
+    <string name="error_movie_details">An error occurred while getting movie details</string>
+    <string name="error_save_movie">An error occurred while saving movie</string>
+    <string name="movie_saved">Movie saved</string>
+    <string name="language">Language</string>
+    <string name="english">English</string>
+    <string name="movies">Movies</string>
+    <string name="saved_movies">Saved Movies</string>
+    <string name="search_movies">Search Movies</string>
+    <string name="share_using">Share Using</string>
+    <string name="change_to_trending_this_week">Tap To See Trending This Week</string>
+    <string name="change_to_trending_today">Tap To See Trending Today</string>
+    <string name="trending_this_week">Top Movies This Week</string>
+    <string name="trending_today">Top Movies Today</string>
+</resources>
