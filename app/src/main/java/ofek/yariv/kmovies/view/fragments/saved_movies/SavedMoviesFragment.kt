@@ -12,6 +12,7 @@ import ofek.yariv.kmovies.databinding.FragmentSavedMoviesBinding
 import ofek.yariv.kmovies.model.data.Resource
 import ofek.yariv.kmovies.utils.Constants
 import ofek.yariv.kmovies.utils.ReportConstants
+import ofek.yariv.kmovies.view.activities.main.listeners.ScrollListener
 import ofek.yariv.kmovies.view.adapters.SavedMoviesAdapter
 import ofek.yariv.kmovies.view.fragments.BaseFragment
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -32,6 +33,7 @@ class SavedMoviesFragment : BaseFragment(R.layout.fragment_saved_movies) {
     }
 
     private fun initiateLayout() {
+        (activity as? ScrollListener)?.onScrolledDown()
         setupRecyclerView()
         observeChanges()
         savedMoviesViewModel.fetchSavedMovies()

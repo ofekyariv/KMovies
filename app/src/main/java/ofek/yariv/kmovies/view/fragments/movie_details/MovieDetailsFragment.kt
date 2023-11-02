@@ -18,6 +18,7 @@ import ofek.yariv.kmovies.utils.Constants
 import ofek.yariv.kmovies.utils.ReportConstants
 import ofek.yariv.kmovies.utils.extensions.parcelable
 import ofek.yariv.kmovies.utils.managers.InternetManager
+import ofek.yariv.kmovies.view.activities.main.listeners.ScrollListener
 import ofek.yariv.kmovies.view.fragments.BaseFragment
 import org.koin.android.ext.android.inject
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -37,6 +38,7 @@ class MovieDetailsFragment : BaseFragment(R.layout.fragment_movie_details) {
     }
 
     private fun initiateLayout() {
+        (activity as? ScrollListener)?.onScrolledDown()
         observeChanges()
         val movie = requireArguments().parcelable<Movie>(Constants.MOVIE)
         if (movie?.id == null) {

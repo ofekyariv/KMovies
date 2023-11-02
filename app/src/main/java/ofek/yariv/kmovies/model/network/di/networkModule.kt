@@ -6,6 +6,7 @@ import ofek.yariv.kmovies.model.network.api.ApiKeyInterceptor
 import ofek.yariv.kmovies.model.network.converters.MoviesConverter
 import ofek.yariv.kmovies.model.network.services.MovieDetailsService
 import ofek.yariv.kmovies.model.network.services.MoviesService
+import ofek.yariv.kmovies.model.network.services.SearchMoviesService
 import okhttp3.OkHttpClient
 import org.koin.core.qualifier.named
 import org.koin.dsl.module
@@ -39,6 +40,9 @@ val networkModule = module {
     }
     single<MovieDetailsService> {
         get<Retrofit>(named(MOVIES_RETROFIT)).create(MovieDetailsService::class.java)
+    }
+    single<SearchMoviesService> {
+        get<Retrofit>(named(MOVIES_RETROFIT)).create(SearchMoviesService::class.java)
     }
     single { MoviesConverter() }
 }

@@ -11,6 +11,7 @@ val repositoryModule = module {
             trendingMoviesWeekDatabase = get(),
             moviesService = get(),
             movieDetailsService = get(),
+            searchMoviesService = get(),
             moviesConverter = get(),
             timeFrameManager = get(),
             internetManager = get(),

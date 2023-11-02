@@ -37,6 +37,7 @@ class MainActivity : AppCompatActivity(), ScrollListener, TopBarTextChangeListen
     }
 
     override fun onScrolledDown() {
+        if (binding.btnMenu.visibility == View.GONE) return
         val fadeOut = AnimationUtils.loadAnimation(this, R.anim.fade_out)
         fadeOut.setAnimationListener(object : Animation.AnimationListener {
             override fun onAnimationStart(animation: Animation) {}

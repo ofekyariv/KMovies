@@ -1,5 +1,6 @@
 package ofek.yariv.kmovies.model.repository
 
+import android.util.Log
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.TimeoutCancellationException
@@ -14,6 +15,7 @@ import ofek.yariv.kmovies.model.db.trending_movies_week.TrendingMoviesWeekDataba
 import ofek.yariv.kmovies.model.network.converters.MoviesConverter
 import ofek.yariv.kmovies.model.network.services.MovieDetailsService
 import ofek.yariv.kmovies.model.network.services.MoviesService
+import ofek.yariv.kmovies.model.network.services.SearchMoviesService
 import ofek.yariv.kmovies.utils.managers.InternetManager
 import ofek.yariv.kmovies.utils.managers.TimeFrameManager
 
@@ -24,6 +26,7 @@ class MoviesRepository(
     private val trendingMoviesWeekDatabase: TrendingMoviesWeekDatabase,
     private val moviesService: MoviesService,
     private val movieDetailsService: MovieDetailsService,
+    private val searchMoviesService: SearchMoviesService,
     private val moviesConverter: MoviesConverter,
     private val timeFrameManager: TimeFrameManager,
     private val internetManager: InternetManager,
@@ -108,5 +111,12 @@ class MoviesRepository(
         return moviesDetails.map {
             moviesConverter.convertMovieDetailsToMovie(movieDetails = it)
         }
+    }
+
+    suspend fun searchMovies(query: String): List<Movie> {
+        Log.d("TAG", "searchMovies: $query")
+        val moviesResponse = searchMoviesService.searchMovies(query = query)
+        Log.d("TAG", "searchMovies2: $moviesResponse")
+        return moviesConverter.convertMoviesResponseToMovies(moviesResponse)
     }
 }
